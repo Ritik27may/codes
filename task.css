@@ -1,0 +1,47 @@
+.dropdown button:hover{
+    background-color: aqua;
+    color:rgb(241, 241, 13);
+}
+.container{
+    display:none;
+}
+.dropdown:hover .container{
+    display:block;
+
+}
+.container{
+    position:relative;
+}
+.Properties{
+    border:2px solid black;
+    background: blueviolet;
+    position:relative;
+    z-index:1;
+    width:50%;
+    bottom:50px;
+    margin-top: 50px;
+    
+}
+.generatingcontent{
+    border:2px solid black;
+    position:absolute;
+    background: grey;
+    top:50px;
+    z-index:3;
+    width:50%;
+    margin-left: 100px;
+
+}
+.Postioning{
+    border:2px solid black;
+    background-color: blueviolet;
+    position:absolute;
+    z-index:2;
+    width:50%;
+    margin-left:180px;
+   
+
+
+    
+}
+
