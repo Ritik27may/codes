@@ -1,0 +1,20 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id ="xyz"></p>
+    <p id="abc"></p>
+    <script>
+        var points=[40,100,1];
+        document.getElementById("xyz").innerHTML=points;
+        points.sort(function(a,b){return b-a});
+        document.getElementById("abc").innerHTML=points;
+
+
+    </script>
+</body>
+</html>
