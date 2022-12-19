@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="demo"></p>
+<script>
+    function randomimage(){
+    var a= new Array();
+    a[0]="https://thumbs.dreamstime.com/b/beautiful-rain-forest-ang-ka-nature-trail-doi-inthanon-national-park-thailand-36703721.jpg";
+    a[1]="https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?cs=srgb&dl=pexels-anjana-c-674010.jpg&fm=jpg";
+    a[2]= "https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80";
+    for(let i=0;i<a.length;i++){
+    var number=Math.floor(Math.random()*a.length);
+    return document.getElementById("demo").innerHTML= '<img src="'+a[number]+'" style="width:150px" />'; 
+    }
+    } 
+</script>  
+<h2  style=" color:rgba(205, 210, 255, 0.89)">get random image function</h2>
+<h3>click the button to generate random image</h3>
+<button onclick="randomimage()"> random image</button>
+</body>
+</html>
