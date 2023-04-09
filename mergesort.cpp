@@ -2,7 +2,7 @@
 #include<vector>
 using namespace std;
 void mergearray(vector<int>&nums,int s,int e){
-  int mid=(s+e/2);
+  int mid=(s+e)/2;
   int len1=mid-s+1;
   int len2=e-mid;
   vector<int>left;
@@ -42,6 +42,31 @@ void mergesort(vector<int>&nums,int s,int e){
    mergesort(nums,s,mid);
    mergesort(nums,mid+1,e);
    mergearray(nums,s,e);
+}
+// inplace mergesort
+void mergearray_inplace(vector<int>&nums,int s,int e){
+  int mid=((s+e)/2);
+  int j=mid+1;
+  int i=s;
+  if(nums[mid]<=nums[j]){
+    return;
+  }
+ while(i<=mid && j<=e){
+   if(nums[i]<=nums[j]){
+     i++;
+ }
+ else{
+   int start=j;
+   int value=nums[j];
+   while(start!=i){
+     nums[start]=nums[start-1];
+     start--;
+   }
+   nums[i]=value;
+   i++;
+   j++;
+    }
+  }
 }
 
 int main() {
