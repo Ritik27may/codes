@@ -1,56 +1,43 @@
-#include<iostream>
+#include <iostream>
+#include<vector>
 using namespace std;
-int partition(int a[],int lb,int ub)
-{
-    int start=lb;
-    int end=ub;
-    int pivot=a[lb];
-    while(start<end)
-    {
-        while(a[start]<=pivot)
-        {
-            start++;
-        }
-        while(a[end]>=pivot)
-        {
-            end--;
-        }
-        int temp=a[start];
-        a[start]=a[end];
-        a[end]=temp;
+void quicksort(vector<int>&nums,int s,int e){
+  if(s>=e){
+    return;
+  }
+  int pivot=nums[s];
+  int count=0;
+  for(int i=s+1;i<=e;i++){
+    if(nums[i]<pivot){
+      count++;
     }
-    if(start>end)
-    {
-        int temp=pivot;
-        pivot=a[end];
-        a[end]=temp;
-
-        return end;
+  }
+  swap(nums[s+count],nums[s]);
+  int index=s+count;
+  int i=s;
+  int j=e;
+  while(i<index && j>index){
+    while(nums[i]<pivot){
+      i++;
     }
-    void quicksort(int a[],int lb,int ub)
-    {
-        if(lb<ub)
-        {
-            int loc = partition(a,lb,ub);
-            quicksort(a,lb,loc-1);
-            quicksort(a,loc+1,ub);
-        }
+    while(nums[j]>pivot){
+      j--;
     }
-    void print(int a[],int lb,int ub)
-    {
-        for(int i=0; i<ub; i++)
-        {
-            cout<<a[i]<< " ";
-        }
-
+    if(i<index && j>index){
+      swap(nums[i],nums[j]);
     }
-
-    int main()
-    {
-        int a[8]= {7,6,10,5,9,2,15,11};
-        int lb=0;
-        int ub=7;
-        quicksort(a,0,7);
-        print(a,0,7)
+    i++;
+    j--;
     }
-
+    quicksort(nums,s,index-1);
+    quicksort(nums,index+1,e);
+  }
+int main() {
+   vector<int>nums{8,3,4,28,20,2,5,30};
+   int s=0;
+   int e=nums.size()-1;
+   quicksort(nums,s,e);
+   for(int i=0;i<nums.size();i++){
+     cout<<nums[i]<<" ";
+   }
+}
