@@ -8,7 +8,7 @@ void quicksort(vector<int>&nums,int s,int e){
   int pivot=nums[s];
   int count=0;
   for(int i=s+1;i<=e;i++){
-    if(nums[i]<pivot){
+    if(nums[i]<=pivot){
       count++;
     }
   }
@@ -17,7 +17,7 @@ void quicksort(vector<int>&nums,int s,int e){
   int i=s;
   int j=e;
   while(i<index && j>index){
-    while(nums[i]<pivot){
+    while(nums[i]<=pivot){
       i++;
     }
     while(nums[j]>pivot){
@@ -33,7 +33,7 @@ void quicksort(vector<int>&nums,int s,int e){
     quicksort(nums,index+1,e);
   }
 int main() {
-   vector<int>nums{8,3,4,28,20,2,5,30};
+   vector<int>nums{8,3,4,8,8,28,20,2,5,8,30};
    int s=0;
    int e=nums.size()-1;
    quicksort(nums,s,e);
