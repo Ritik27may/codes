@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+using namespace std;
+void clook(vector<int>&nums,int& seek,vector<int>&seek_sequence,int head){
+  vector<int>right;
+  vector<int>left;
+  for(int i=0;i<nums.size();i++){
+    if(nums[i]>head){
+      right.push_back(nums[i]);
+    }
+    else{
+      left.push_back(nums[i]);
+    }
+  }
+  int distance=0;
+  int current=0;
+  sort(right.begin(),right.end());
+  sort(left.begin(),left.end());
+  for(int i=0;i<right.size();i++){
+    current=right[i];
+    seek_sequence.push_back(current);
+    seek+=abs(current-head);
+    head=current;
+  }
+  seek+=abs(head-left[0]);
+  head=left[0];
+  for(int i=0;i<left.size();i++){
+     current=left[i];
+    seek_sequence.push_back(current);
+    seek+=abs(current-head);
+    head=current;
+  }
+}
+int main(){
+  vector<int>nums{176, 79, 34, 60,92, 11, 41, 114};
+  int seek=0;
+  int head=50;
+  vector<int>seek_sequence;
+  clook(nums,seek,seek_sequence,head);
+  cout<<seek<<endl;
+  for(auto& n:seek_sequence){
+    cout<<n<<endl;
+  }
+}
