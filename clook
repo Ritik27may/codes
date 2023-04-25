@@ -30,6 +30,67 @@ void clook(vector<int>&nums,int& seek,vector<int>&seek_sequence,int head){
     head=current;
   }
 }
+// CSAN ALGO
+#include<bits/stdc++.h>
+using namespace std;
+void cscan(vector<int>&nums,int& seek,vector<int>&seek_sequence,string direction,int head){
+   vector<int>left;
+   vector<int>right;
+   if(direction=="left"){
+     left.push_back(0);
+   }
+   else{
+     right.push_back(200);
+   }
+   for(int i=0;i<nums.size();i++){
+     if(nums[i]>head){
+        right.push_back(nums[i]);
+     }
+     else{
+       left.push_back(nums[i]);
+     }
+   }
+   int current=0;
+   sort(left.begin(),left.end());
+   sort(right.begin(),right.end());
+   int run=2;
+   while(run>0){
+     if(direction=="left"){
+       for(int i=left.size()-1;i>=0;i--){
+         current=left[i];
+         seek_sequence.push_back(current);
+         seek+=abs(current-head);
+         head=current;
+       }
+       direction="right";
+       run--;
+     }
+     else{
+        for(int i=0;i<right.size();i++){
+         current=right[i];
+          seek_sequence.push_back(current);
+         seek+=abs(current-head);
+         head=current;
+       }
+       direction="left";
+       run--;
+     }
+   }
+}
+int main() {
+  vector<int>nums{ 176, 79, 34, 60, 92, 11, 41, 114 };
+  int head=50;
+  int seek=0;
+  vector<int>seek_sequence;
+  string direction="right";
+  cscan(nums,seek,seek_sequence,direction,head);
+  cout<<seek<<endl;
+   cout<<"the seek sequence is"<<endl;
+  for(auto& n:seek_sequence){
+    cout<< n <<endl;
+  }
+  return 0;
+}
 int main(){
   vector<int>nums{176, 79, 34, 60,92, 11, 41, 114};
   int seek=0;
